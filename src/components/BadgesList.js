@@ -1,43 +1,62 @@
 import React from "react";
 
 import twitterPic from "../images/twitter.svg";
+import { Link } from "react-router-dom";
+
+class BadgesListItem extends React.Component {
+  render() {
+    return (
+      <div className="BadgesListItem">
+        <img
+          className="BadgesListItem__avatar"
+          src={this.props.badge.avatarUrl}
+          alt={`${this.props.badge.firstName} ${this.props.badge.lastName}`}
+        />
+
+        <div>
+          <strong>
+            {this.props.badge.firstName} {this.props.badge.lastName}
+          </strong>
+          <br />
+          <img
+            className="BadgesListItem_twitterIcon"
+            src={twitterPic}
+            alt="TwitterPic"
+            width="20"
+          />
+          @{this.props.badge.twitter}
+          <br />@{this.props.badge.jobTitle}
+        </div>
+      </div>
+    );
+  }
+}
 
 class BadgesList extends React.Component {
   render() {
+    if (this.props.badges.length === 0) {
+      return (
+        <div>
+          <h3> No badges were found</h3>
+          <Link className="btn btn-primary" to="/badges/new">
+            Create new badge
+          </Link>
+        </div>
+      );
+    }
+
     return (
-      <ul className="list-unstyled ">
-        {this.props.badges.map(badge => {
-          return (
-            <li key={badge.id} className="list-unstyled BadgesList">
-              <div className="BadgesListItem">
-                <img
-                  className="BadgesListItem__avatar"
-                  src={badge.avatarURL}
-                  alt="Avatar"
-                  width="80"
-                />
-                <div>
-                  <div className="BadgesListItem_title">
-                    {badge.firstname} {badge.lastname}
-                  </div>
-
-                  <div className="BadgesListItem_twitter">
-                    <img
-                    className="BadgesListItem_twitterIcon"
-                    src={twitterPic}
-                    alt="TwitterPic"
-                    width="20"
-                    />
-                    @{badge.twitter}
-                  </div>
-
-                  <p>{badge.jobtitle}</p>
-                </div>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+      <div className="BadgesList">
+        <ul className="list-unstyled ">
+          {this.props.badges.map(badge => {
+            return (
+              <li key={badge.id}>
+                <BadgesListItem badge={badge} />
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     );
   }
 }
