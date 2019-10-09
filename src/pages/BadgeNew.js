@@ -4,65 +4,59 @@ import "../pages/styles/BadgeNew.css";
 import Badge from "../components/Badge";
 import BadgeForm from "../components/BadgeForm";
 
-import header from "../images/badge-header.svg";
+import header from "../images/platziconf-logo.svg";
+import api from "../api";
 // import NavBar from "../components/NavBar";
-
-import aldhairPic from "../images/Aldhair Vera.jpg";
-
 class BadgeNew extends React.Component {
   state = {
     form: {
-      firstname: "",
-      lastname: "",
-      email: "",
-      jobtitle: "Designer",
-      twitter: "",
+      firstName: '',
+      lastName: '',
+      email: '',
+      jobTitle: '',
+      twitter: '',
       hashtag: "#Al_V"
     }
   };
 
   handleChange = e => {
-    //First way
-    // const nextForm=this.state.form;
-    // nextForm[e.target.name]=e.target.value;
-
     this.setState({
-      //First way
-      // form:
-      // nextForm
-
-      //Second Way
       form: {
         ...this.state.form,
-        [e.target.name]: e.target.value
-      }
+        [e.target.name]: e.target.value,
+      },
     });
   };
+
+  handleSubmit= async e=>{
+    e.preventDefault() //Stops from sending
+    this.setState({loading:true,error:null})
+
+    try{
+      await api.badges.create(this.state.form);
+      this.setState({loading:false})
+    }catch(error){
+      this.setState({loading:false,error:error});
+    }
+  }
 
   render() {
     return (
       <React.Fragment>
-        {/* <NavBar /> */}
         <div className="BadgeNew__hero">
-          <img className="img-fluid" src={header} alt="Logo " />
+          <img className="img-fluid Badge_Image" src={header} alt="Logo " />
         </div>
 
         <div className="container">
           <div className="row">
             <div className="col-6">
               <Badge
-                // firstname="Aldhair"
-                // lastname="Vera Camacho"
-                // jobtitle="Game Programmer and Game Designer"
-                // twitter="@AldhairVera"
-                // hashtag="#Al_V"
-                firstname={this.state.form.firstname}
-                lastname={this.state.form.lastname}
-                jobtitle={this.state.form.jobtitle}
-                twitter={this.state.form.twitter}
-                email={this.state.form.email}
-                hashtag={this.state.form.hashtag}
-                // pic={aldhairPic}
+                firstName={this.state.form.firstName || "First Name"}
+                lastName={this.state.form.lastName || "Last Name"}
+                jobTitle={this.state.form.jobTitle || "Job Title"}
+                twitter={this.state.form.twitter || "Twitter"}
+                email={this.state.form.email || "Email"}
+                hashtag={this.state.form.hashtag || "Hashtag"}
                 pic="https://s.gravatar.com/avatar/56d45d79a669a78110923f34353061aa?s=80"
               />
             </div>
@@ -70,6 +64,7 @@ class BadgeNew extends React.Component {
             <div className="col-6">
               <BadgeForm
                 onChange={this.handleChange}
+                onSubmit={this.handleSubmit}
                 formValues={this.state.form}
               />
             </div>

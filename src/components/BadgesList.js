@@ -2,15 +2,15 @@ import React from "react";
 
 import twitterPic from "../images/twitter.svg";
 import { Link } from "react-router-dom";
+import Gravatar from "../components/Gravatar";
 
 class BadgesListItem extends React.Component {
   render() {
     return (
       <div className="BadgesListItem">
-        <img
+        <Gravatar
           className="BadgesListItem__avatar"
-          src={this.props.badge.avatarUrl}
-          alt={`${this.props.badge.firstName} ${this.props.badge.lastName}`}
+          email={this.props.badge.email}
         />
 
         <div>
@@ -25,7 +25,8 @@ class BadgesListItem extends React.Component {
             width="20"
           />
           @{this.props.badge.twitter}
-          <br />@{this.props.badge.jobTitle}
+          <br />
+          {this.props.badge.jobTitle}
         </div>
       </div>
     );

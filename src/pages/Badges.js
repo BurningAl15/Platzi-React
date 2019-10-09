@@ -17,60 +17,11 @@ class Badges extends React.Component {
   state = {
     loading:true,
     error:null,
-    // data: undefined
     data:undefined
   };
 
-  // constructor(props){
-  //   super(props);
-  //   console.log('1. constructor()');
-
-  //   this.state = {
-  //     loading:true,
-  //     error:null,
-  //     data: undefined
-  //   };
-  // }
-
   componentDidMount(){
-
     this.timeoutId=this.fetchData();
-
-    // this.timeoutId = setTimeout(() => {
-    //   this.setState({
-    //     data: [
-    //       {
-    //         id: "12sm12ps1p2so12spo-1spo-kopa-sdpo",
-    //         firstname: "Nancy",
-    //         lastname: "Rojas Salvatierra",
-    //         email: "nancyrs22@hotmail.com",
-    //         jobtitle: "Jr. Technical Artist",
-    //         twitter: "Nhymer22",
-    //         avatarURL:
-    //           "https://s.gravatar.com/avatar/bf8c310c9c7faed29ec820a6b9e8ebfb?s=80"
-    //       },
-    //       {
-    //         id: "22sm12ps1p2so12spo-1spo-kopa-sdpo",
-    //         firstname: "Stormy",
-    //         lastname: "Vera Camacho",
-    //         email: "stormyTheBlondie@hotmail.com",
-    //         jobtitle: "Blondie Baby",
-    //         twitter: "BlondieBae",
-    //         avatarURL:
-    //           "https://media.istockphoto.com/photos/icon-of-a-businessman-avatar-or-profile-pic-picture-id474001892"
-    //       },
-    //       {
-    //         id: "32sm12ps1p2so12spo-1spo-kopa-sdpo",
-    //         firstname: "Drakary",
-    //         lastname: "Rojas Salvatierra",
-    //         email: "fatkitten@hotmail.com",
-    //         jobtitle: "Fat kitten",
-    //         twitter: "TheFatKitten",
-    //         avatarURL:
-    //           "https://s.gravatar.com/avatar/bf8c310c9c7faed29ec820a6b9e8ebfb?s=80"
-    //       }
-    //     ]      })
-    // }, 3000);
   }
 
   fetchData=async () => {
@@ -85,13 +36,7 @@ class Badges extends React.Component {
     }
   }
 
-  // componentDidUpdate(prevProps,prevState){
-  //   console.log('5. componentDidUpdate()');
-  //   console.log({prevProps:prevProps,prevState:prevState});
-  // }
-
   componentWillUnmount(){
-    console.log('6. componentWillUnmount()');
     clearTimeout(this.timeoutId);
   }
 
@@ -106,8 +51,6 @@ class Badges extends React.Component {
 
     return (
       <React.Fragment>
-        {console.log('3. render()')}
-
         <div className="Badges">
           <div className="Badges__hero">
             <div className="Badges__container">

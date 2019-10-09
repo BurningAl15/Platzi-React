@@ -5,4 +5,13 @@
   background-repeat: repeat;
   margin-bottom: 1rem;
   color: #ffffff;
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  justify-content: center;
+}
+
+.Badge_Image{
+  max-height: 125px;
 }
