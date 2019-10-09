@@ -12,6 +12,7 @@ import api from '../api';
 
 import PageLoading from '../components/PageLoading';
 import PageError from '../components/PageError';
+import MiniLoader from '../components/MiniLoader';
 
 class Badges extends React.Component {
   state = {
@@ -22,6 +23,10 @@ class Badges extends React.Component {
 
   componentDidMount(){
     this.timeoutId=this.fetchData();
+
+    this.intervalId=setInterval(() => {
+      this.fetchData();
+    }, 5000);
   }
 
   fetchData=async () => {
@@ -38,10 +43,12 @@ class Badges extends React.Component {
 
   componentWillUnmount(){
     clearTimeout(this.timeoutId);
+    clearInterval(this.intervalId);
   }
 
   render() {
-    if(this.state.loading===true){
+    //this.state.data===undefined and !this.state.data are the same
+    if(this.state.loading===true && !this.state.data){
       return <PageLoading />;
     };
 
@@ -70,6 +77,7 @@ class Badges extends React.Component {
         <div className="Badges__list">
           <div className="Badges__container">
             <BadgesList badges={this.state.data} />
+            {this.state.loading && <MiniLoader/>}
           </div>
         </div>
       </React.Fragment>

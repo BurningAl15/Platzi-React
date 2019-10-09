@@ -2,7 +2,7 @@
   "badges": [
     {
       "id": "250fe715-88d4-4c18-95e7-62a6a097803a",
-      "firstName": "Zoie",
+      "firstName": "Zoey",
       "lastName": "Grant",
       "email": "Efrain_Gaylord6@yahoo.com",
       "jobTitle": "Corporate Branding Representative",
@@ -52,7 +52,10 @@
       "jobtitle": "Designer",
       "twitter": "AlVera15",
       "hashtag": "#Al_V",
-      "id": "RBYTdqs"
+      "id": "RBYTdqs",
+      "firstName": "Aldhair",
+      "lastName": "Vera Camacho",
+      "jobTitle": "CTO"
     },
     {
       "firstname": "Aldhair",
@@ -159,6 +162,33 @@
       "twitter": "asfasfasf",
       "hashtag": "#Al_V",
       "id": "QzJzJzb"
+    },
+    {
+      "firstName": "Stormy",
+      "lastName": "Vera Camacho",
+      "email": "imjustadoggy@gmail.com",
+      "jobTitle": "Profesional blondy baby",
+      "twitter": "StormyTheBlondie",
+      "hashtag": "#Al_V",
+      "id": "ervKggF"
+    },
+    {
+      "firstName": "Drakary",
+      "lastName": "Rojas Salvatierra",
+      "email": "drakythefatty@gmail.com",
+      "jobTitle": "Profesional Fat kitten",
+      "twitter": "DrakyTheFatty",
+      "hashtag": "#Al_V",
+      "id": "rjIqt05"
+    },
+    {
+      "firstName": "Toto",
+      "lastName": "Vera Camacho",
+      "email": "goodBoy@gmail.com",
+      "jobTitle": "Profesional Good Boy",
+      "twitter": "GoodBoy",
+      "hashtag": "#Al_V",
+      "id": "wcS7qXc"
     }
   ]
 }
