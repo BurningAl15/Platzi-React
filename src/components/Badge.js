@@ -32,7 +32,9 @@ class Badge extends React.Component {
           <div>@{this.props.twitter}</div>
         </div>
 
-        <div className="Badge_footer">{this.props.hashtag}</div>
+        <div className="Badge_footer">
+          {this.props.hashtag}
+        </div>
       </div>
     );
   }
