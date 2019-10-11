@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import BadgeNew from "../pages/BadgeNew";
 import Badges from "../pages/Badges";
 import BadgeEdit from "../pages/BadgeEdit";
-import BadgeDetails from "../pages/BadgeDetails";
+import BadgeDetails from "../pages/BadgeDetailsContainer";
 import Home from "../pages/Home";
 import Layout from "./Layout";
 import NotFound from "./NotFound";
