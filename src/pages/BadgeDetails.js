@@ -1,10 +1,13 @@
 import React from "react";
+import ReactDOM from "react-dom";
 
 import { Link } from "react-router-dom";
 
 import logo from "../images/platziconf-logo.svg";
 import "./styles/BadgeDetails.css";
 import Badge from "../components/Badge";
+
+import DeleteModal from "../components/DeleteBadgeModal";
 
 function BadgeDetails(props) {
   const badge = props.badge;
@@ -53,7 +56,13 @@ function BadgeDetails(props) {
               </div>
 
               <div>
-                <button className="btn btn-danger">Delete</button>
+                <button onClick={props.onOpenModal} className="btn btn-danger">Delete</button>
+                {/* (que queremos renderizar, donde lo queremos renderizar) */}
+                <DeleteModal 
+                isOpen={props.modalIsOpen}
+                onClose={props.onCloseModal}
+                onDeleteBadge={props.onDeleteBadge}
+                />
               </div>
             </div>
           </div>
