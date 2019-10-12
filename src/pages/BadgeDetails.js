@@ -9,7 +9,19 @@ import Badge from "../components/Badge";
 
 import DeleteModal from "../components/DeleteBadgeModal";
 
+function useIncreaseCount(max){
+  const [count, setCount] = React.useState(0); //Simple Hook
+
+  if(count>max){
+    setCount(0);
+  }
+  return [count,setCount];
+}
+
 function BadgeDetails(props) {
+  // const [count, setCount] = React.useState(0); //Simple Hook
+  const [count, setCount] = useIncreaseCount(4); //Custom Hook
+
   const badge = props.badge;
 
   return (
@@ -47,6 +59,15 @@ function BadgeDetails(props) {
             <h2>Actions</h2>
             <div>
               <div>
+                <button
+                  onClick={() => {
+                    setCount(count +1);
+                  }}
+                  className="btn btn-primary"
+                >
+                  Increase Count: {count}
+                </button>
+
                 <Link
                   className="btn btn-primary mb-4"
                   to={`/badges/${badge.id}/edit`}
@@ -56,12 +77,14 @@ function BadgeDetails(props) {
               </div>
 
               <div>
-                <button onClick={props.onOpenModal} className="btn btn-danger">Delete</button>
+                <button onClick={props.onOpenModal} className="btn btn-danger">
+                  Delete
+                </button>
                 {/* (que queremos renderizar, donde lo queremos renderizar) */}
-                <DeleteModal 
-                isOpen={props.modalIsOpen}
-                onClose={props.onCloseModal}
-                onDeleteBadge={props.onDeleteBadge}
+                <DeleteModal
+                  isOpen={props.modalIsOpen}
+                  onClose={props.onCloseModal}
+                  onDeleteBadge={props.onDeleteBadge}
                 />
               </div>
             </div>
